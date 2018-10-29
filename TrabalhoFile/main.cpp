@@ -29,8 +29,16 @@ int main()
             getline(arquivobxado,imp);
             correta=imp.substr(4,55);
             aux=imp.substr(4,4);
-            cout<<correta<<endl;
-            //numcomp=stoi(aux);
+            //cout<<correta<<endl;
+            if(aux!="")
+			{
+				//numcomp=stoi(aux);
+				cout<<correta<<endl;
+				arq<<correta<<endl;
+			
+			}
+		
+			
             /*if(numcomp)
 			{
 				cout<<numcomp<<endl;
@@ -40,7 +48,7 @@ int main()
 				getline(arquivobxado,vazio);
 			}*/
 			
-            arq<<aux<<endl;
+            
 
         }
     }
