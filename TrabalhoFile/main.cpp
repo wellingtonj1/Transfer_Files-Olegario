@@ -27,18 +27,20 @@ int main()
         {
 
             getline(arquivobxado,imp);
-            correta=imp.substr(4,65);
+            correta=imp.substr(4,55);
             aux=imp.substr(4,4);
-            numcomp=stoi(aux);
-            if(numcomp)
+            cout<<correta<<endl;
+            //numcomp=stoi(aux);
+            /*if(numcomp)
 			{
 				cout<<numcomp<<endl;
 			}
 			else
 			{
 				getline(arquivobxado,vazio);
-			}
-            arq<<correta<<endl;
+			}*/
+			
+            arq<<aux<<endl;
 
         }
     }
