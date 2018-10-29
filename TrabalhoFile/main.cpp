@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
-
+#include <string>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -19,13 +20,25 @@ int main()
     }
     else
     {
+        string correta,vazio,aux;
+        int numcomp;
         arquivobxado.seekg(405);
         while(!arquivobxado.eof())
         {
 
             getline(arquivobxado,imp);
-            cout<<imp<<endl;
-            arq<<imp<<endl;
+            correta=imp.substr(4,65);
+            aux=imp.substr(4,4);
+            numcomp=stoi(aux);
+            if(numcomp)
+			{
+				cout<<numcomp<<endl;
+			}
+			else
+			{
+				getline(arquivobxado,vazio);
+			}
+            arq<<correta<<endl;
 
         }
     }
@@ -34,3 +47,4 @@ int main()
     arq.close();
 
 }
+
