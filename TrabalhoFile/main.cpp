@@ -3,6 +3,7 @@
 #include <string>
 #include <bits/stdc++.h>
 
+
 using namespace std;
 
 int main()
@@ -20,9 +21,10 @@ int main()
     }
     else
     {
-        string correta,vazio,aux;
-        int numcomp;
+        string correta,vazio,aux,segun,terce,quar,login,senha,nome;
+        int prime;
         arquivobxado.seekg(405);
+        arq<<"#!/bin/bash"<<endl;
         while(!arquivobxado.eof())
         {
 
@@ -31,24 +33,30 @@ int main()
             aux=imp.substr(4,4);
             //cout<<correta<<endl;
             if(aux!="")
-			{
-				//numcomp=stoi(aux);
-				cout<<correta<<endl;
-				arq<<correta<<endl;
-			
-			}
-		
-			
-            /*if(numcomp)
-			{
-				cout<<numcomp<<endl;
-			}
-			else
-			{
-				getline(arquivobxado,vazio);
-			}*/
-			
-            
+            {
+				
+                try
+                {
+                    prime= stoi(aux);
+                    segun=(imp.substr(9,1));
+					terce=(imp.substr(11,3));
+					quar=(imp.substr(15,4));
+                }
+                catch(invalid_argument)
+                {
+                }
+                if(prime>1000&&prime<3000)
+                {
+					aux= to_string(prime);
+					login="a"+aux+segun+terce+quar;
+					nome=imp.substr(26,29);
+					//cout<<nome;
+                    cout<<login<<endl;//prime<<segun<<terce<<quar<<endl;
+                    arq<<"a"<<prime<<segun<<terce<<quar<<endl;
+                }
+
+            }
+
 
         }
     }
