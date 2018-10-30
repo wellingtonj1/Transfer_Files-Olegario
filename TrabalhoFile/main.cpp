@@ -23,7 +23,7 @@ int main()
     {
         string correta,vazio,aux,segun,terce,quar,senha,nome,subnome;
         string login;
-        int prime;
+        int prime,y=0;
         arquivobxado.seekg(405);
         arq<<"#!/bin/bash"<<endl;
         while(!arquivobxado.eof())
@@ -51,7 +51,19 @@ int main()
 					aux= to_string(prime);
 					login="a"+aux+segun+terce+quar;
 				    nome=imp.substr(26,29);
-                    for(unsigned int x=0;x<nome.size() && nome.substr(26,x)!=" ";x++);
+                    for(unsigned int x=0;x<nome.size();x++)
+                    {
+						if(nome.substr(26,x)==" ")
+						{
+							for(unsigned int w=0;w<nome.size();w++)
+							{
+								if(nome.substr(x,y)==" ")
+								{
+									subnome=nome.substr(x,y);
+								}
+							}
+						}
+					}
 					
                                         
                     cout<<login<<nome<<endl;
