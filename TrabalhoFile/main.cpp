@@ -61,7 +61,8 @@ int main()
 					aux= to_string(prime);
 					login="a"+aux+segun+terce+quar;
 				    nome=imp.substr(26,29);
-                    /*for(unsigned int x=0;x<nome.size();x++)
+                   
+                    for(unsigned int x=0;x<nome.size();x++)
                     {
 						if(nome.substr(26,x)==" ")
 						{
@@ -69,15 +70,16 @@ int main()
 							{
 								if(nome.substr(x,y)==" ")
 								{
-									subnome=nome.substr(x,y);
+									subnome=quar+nome.substr(x,y);
+									cout<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;
+									arq<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;
 								}
 							}
 						}
-					}*/
+					}
 					
                                         
-                    cout<<login<<nome<<endl;
-                    arq<<login<<nome<<endl;
+                    
                 }
 
             }
