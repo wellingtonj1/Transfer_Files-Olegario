@@ -3,6 +3,16 @@
 #include <string>
 #include <bits/stdc++.h>
 
+/*	Only c++11 
+ * Compile:
+ * 
+ * g++ -Wall -std=c++0x -c "%f"
+ * 
+ * Build:
+ * 
+ * g++ -Wall -std=c++0x -o "%e" "%f"
+ * 
+ */
 
 using namespace std;
 
@@ -51,7 +61,7 @@ int main()
 					aux= to_string(prime);
 					login="a"+aux+segun+terce+quar;
 				    nome=imp.substr(26,29);
-                    for(unsigned int x=0;x<nome.size();x++)
+                    /*for(unsigned int x=0;x<nome.size();x++)
                     {
 						if(nome.substr(26,x)==" ")
 						{
@@ -63,7 +73,7 @@ int main()
 								}
 							}
 						}
-					}
+					}*/
 					
                                         
                     cout<<login<<nome<<endl;
