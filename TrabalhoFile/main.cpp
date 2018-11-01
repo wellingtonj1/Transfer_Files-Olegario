@@ -31,18 +31,17 @@ int main()
     }
     else
     {
+		size_t position,pos;
         string correta,vazio,aux,segun,terce,quar,senha,nome,subnome;
         string login;
-        int prime,y=0;
+        int prime;
         arquivobxado.seekg(405);
         arq<<"#!/bin/bash"<<endl;
         while(!arquivobxado.eof())
         {
 
             getline(arquivobxado,imp);
-            correta=imp.substr(4,55);
             aux=imp.substr(4,4);
-            //cout<<correta<<endl;
             if(aux!="")
             {
 				
@@ -60,26 +59,16 @@ int main()
                 {
 					aux= to_string(prime);
 					login="a"+aux+segun+terce+quar;
-				    nome=imp.substr(26,29);
-                   
-                    for(unsigned int x=0;x<nome.size();x++)
-                    {
-						if(nome.substr(26,x)==" ")
-						{
-							for(unsigned int w=0;w<nome.size();w++)
-							{
-								if(nome.substr(x,y)==" ")
-								{
-									subnome=quar+nome.substr(x,y);
-									cout<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;
-									arq<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;
-								}
-							}
-						}
-					}
-					
-                                        
+				    nome=imp.substr(26,32);
                     
+                    position=nome.find(" ");
+                    subnome=nome.substr(position,10);
+                    pos=subnome.find(" ");   
+					subnome=nome.substr(position,pos);
+					cout<<subnome;
+					
+					//cout<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;
+					arq<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;
                 }
 
             }
