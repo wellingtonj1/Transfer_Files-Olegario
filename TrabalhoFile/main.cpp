@@ -20,9 +20,7 @@ int main()
 {
     ofstream arq("logins.sh");
     ifstream arquivobxado;
-    string imp;
-
-
+    string imp,imprimir;
     arquivobxado.open("CMP-2.txt");
 
     if(!arquivobxado.is_open())
@@ -32,7 +30,7 @@ int main()
     else
     {
         string correta,vazio,aux,segun,terce,quar,senha,nome,subnome;
-        string login;
+        string login,auxquar= "";
         int prime;
         arquivobxado.seekg(405);
         arq<<"#!/bin/bash"<<endl;
@@ -44,7 +42,6 @@ int main()
 			    aux=imp.substr(4,4);
 			    if(aux!="")
 			    {
-				
 	                try
 	                {
 	                    prime= stoi(aux);
@@ -52,36 +49,46 @@ int main()
 						terce=(imp.substr(11,3));
 						quar=(imp.substr(15,4));
 	                }
-	                catch(invalid_argument)
-	                {
-	                }
+	                catch(invalid_argument){}
+	              
 	                if(prime>1000&&prime<3000)
-	                {					
-						int o,p,auxo;
+	                {	
+						int contador=0;
+						string straux= "";				
 						aux= to_string(prime);
 						login="a"+aux+segun+terce+quar;
 					    nome=imp.substr(26,32);
 					    
-						o=nome.find(" ");
-						auxo=o;
-						for( ;o<nome.size();o++)
-						{
-							if(nome.substr(o,1)==" ")
+					    
+					    for(unsigned int y=0;y<nome.length();y++)
+					    {
+							if(nome[y]==' '&&nome[y+2]!=' ')
 							{
-								p=o;
+								subnome=straux;
+								contador++;
 							}
+							else
+							{
+								if(contador==1)
+								{
+									straux+=tolower(nome[y]);	
+								}
+							}
+							
 						}
-						subnome=quar+nome.substr(auxo,p);
+					    						
 					}
-	                //cout<<subnome;						
-					cout<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;
-					arq<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;		
+					if(auxquar!=quar)
+					{
+						imprimir="useradd -p `openssl passwd -crypt "+quar+subnome+"` -c \'"+nome+"'"+login+"\n";
+						cout<<imprimir;	
+						arq<<imprimir;		
+					}
+					auxquar=quar;
 				}
-			}
-            	
-			catch(out_of_range)
-			{
-			}
+			}	
+			catch(out_of_range){}
+			
 
         }
     }
