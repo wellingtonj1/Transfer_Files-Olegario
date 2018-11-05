@@ -31,7 +31,6 @@ int main()
     }
     else
     {
-		size_t position,pos;
         string correta,vazio,aux,segun,terce,quar,senha,nome,subnome;
         string login;
         int prime;
@@ -57,20 +56,29 @@ int main()
 	                {
 	                }
 	                if(prime>1000&&prime<3000)
-	                {
+	                {					
+						int o,p,auxo;
 						aux= to_string(prime);
 						login="a"+aux+segun+terce+quar;
 					    nome=imp.substr(26,32);
-	                    
-	                    position=nome.find(" ");
-	                    subnome=nome.substr(position,10);
-	                    pos=subnome.find(" ");   
-						subnome=nome.substr(position,pos);							
-						cout<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;
-						arq<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;				
+					    
+						o=nome.find(" ");
+						auxo=o;
+						for( ;o<nome.size();o++)
+						{
+							if(nome.substr(o,1)==" ")
+							{
+								p=o;
+							}
+						}
+						subnome=quar+nome.substr(auxo,p);
 					}
+	                //cout<<subnome;						
+					cout<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;
+					arq<<"useradd -p `openssl passwd -crypt "<<subnome<<"` -c '"<<nome<<"'"<<login<<endl;		
 				}
-            }	
+			}
+            	
 			catch(out_of_range)
 			{
 			}
